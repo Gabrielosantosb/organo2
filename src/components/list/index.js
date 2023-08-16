@@ -1,23 +1,20 @@
-import React from 'react';
-import { ListContainer, Select } from './styles';
-import { Label } from '../textField/styled';
+import React from "react";
+import { ListContainer, Select } from "./styles";
+import { Label } from "../textField/styled";
 
-// import { Container } from './styles';
-
-export const List = ({label,placeholder,value,onChange}) => {
-  return(
+export const List = ({ label, placeholder, value, onChange, groups }) => {
+  return (
     <ListContainer>
-        <Label>
-            {label}
-        </Label>
+      <Label>{label}</Label>
 
-        <Select onChange={onChange} value={value}></Select>
-
-
+      <Select onChange={onChange} value={value} placeholder={placeholder} required >
+        <option value="" />
+        {groups.map((item, index) => (
+          <option value={item.nome}>
+            {item.nome}
+          </option>
+        ))}
+      </Select>
     </ListContainer>
-
-
-
-  )
-}
-
+  );
+};

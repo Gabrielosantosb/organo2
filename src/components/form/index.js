@@ -5,30 +5,28 @@ import { List } from "../list";
 
 // import { Container } from './styles';
 
-export const Forms = () => {
+export const Forms = ({groups}) => {
   const [name, setName] = useState("");
   const [charge, setCharge] = useState("");
   const [img, setImg] = useState("");
   const [area, setArea] = useState("");
-
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const employee = {
       name,
       charge,
-      img
+      img,
+      area
     };
     addEmployee(employee);
-    setName('');
-    setCharge('');
-    setImg('');
+    setName("");
+    setCharge("");
+    setImg("");
   };
 
   const addEmployee = (employee) => {
-    console.log('Adicionando funcionário:', employee);
+    console.log("Adicionando funcionário:", employee);
   };
 
   return (
@@ -36,6 +34,7 @@ export const Forms = () => {
       <Form onSubmit={handleSubmit}>
         <Title>Preencha os Dados</Title>
         <TextField
+          required={true}
           label="Nome"
           placeholder="Digite seu nome"
           value={name}
@@ -43,6 +42,7 @@ export const Forms = () => {
         />
 
         <TextField
+          required={true}
           label="Cargo"
           placeholder="Digite seu cargo"
           value={charge}
@@ -50,14 +50,15 @@ export const Forms = () => {
         />
 
         <TextField
+          required={false}
           label="Imagem"
           placeholder="https://github.com/usuario.png"
           value={img}
           onChange={(newValue) => setImg(newValue.target.value)}
         />
         <List
+          groups={groups}
           label="Área"
-          placeholder="https://github.com/usuario.png"
           value={area}
           onChange={(newValue) => setArea(newValue.target.value)}
         />
