@@ -4,16 +4,21 @@ import { Employee } from "../employee";
 
 // import { Container } from './styles';
 
-export const Footer = ({ groups, employee }) => {
+
+  export const Footer = ({ name, color, employees }) => {
     return (
-      <GroupsContainer>
-        {groups.map((group, index) => (
-            <EmployeesCotainer key={index} style={{ backgroundColor: group.color }}>
-              <TitleH3 style={{ color: group.corPrimaria }}>{group.nome}</TitleH3>
-              
-            
-          </EmployeesCotainer>
-        ))}
+      <GroupsContainer color={color}>
+        <TitleH3>{name}</TitleH3>
+        <EmployeesCotainer>
+          {employees.map((employee) => (
+            <Employee
+              key={employee.name} 
+              name={employee.name}
+              charge={employee.charge}
+              img={employee.img}
+            />
+          ))}
+        </EmployeesCotainer>
       </GroupsContainer>
     );
   };
