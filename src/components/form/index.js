@@ -5,7 +5,7 @@ import { List } from "../list";
 
 // import { Container } from './styles';
 
-export const Forms = ({groups}) => {
+export const Forms = ({groups, newEmployee}) => {
   const [name, setName] = useState("");
   const [charge, setCharge] = useState("");
   const [img, setImg] = useState("");
@@ -13,21 +13,21 @@ export const Forms = ({groups}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const employee = {
+    
+    newEmployee({
+
       name,
       charge,
       img,
       area
-    };
-    addEmployee(employee);
+      })
+    
     setName("");
     setCharge("");
     setImg("");
   };
 
-  const addEmployee = (employee) => {
-    console.log("Adicionando funcionário:", employee);
-  };
+
 
   return (
     <FormContainer>

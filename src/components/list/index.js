@@ -10,8 +10,8 @@ export const List = ({ label, placeholder, value, onChange, groups }) => {
       <Select onChange={onChange} value={value} placeholder={placeholder} required >
         <option value="" />
         {groups.map((item, index) => (
-          <option value={item.nome}>
-            {item.nome}
+          <option value={item.name} key={index}>
+            {item.name}
           </option>
         ))}
       </Select>

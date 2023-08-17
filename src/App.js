@@ -3,52 +3,64 @@ import "./App.css";
 import { Forms } from "./components/form";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
+import { Employee } from "./components/employee";
 
 function App() {
-  
-
-  const [employee, setEmployee] = useState([]);
+  const [employees, setEmployees] = useState([]);
   const addEmployee = (newEmployee) => {
-    setEmployee([...employee, newEmployee]);
-    console.log(employee)
+    setEmployees([...employees, newEmployee]);
   };
   const groups = [
     {
-      nome: "Garçom",
+      name: "Garçom",
       corPrimaria: "#57C278",
       color: "#D9F7E9",
     },
     {
-      nome: "Cozinha",
+      name: "Cozinha",
       corPrimaria: "#82CFFA",
       color: "#E8F8FF",
     },
     {
-      nome: "Limpeza",
+      name: "Limpeza",
       corPrimaria: "#A6D157",
       color: "#F0F8E2",
     },
     {
-      nome: "Gerência",
+      name: "Gerência",
       corPrimaria: "#E06B69",
       color: "#FDE7E8",
     },
     {
-      nome: "Recepção",
+      name: "Recepção",
       corPrimaria: "#DB6EBF",
       color: "#FAE9F5",
     },
   ];
-  useEffect(()=>{
-    console.log(employee)
-  }, [employee])
+  useEffect(() => {
+    console.log(employees);
+  }, [employees]);
+
+
   return (
     <>
       <Header />
-      <Forms groups={groups} addEmployee = {employee =>addEmployee(employee)}/>
-      <Footer groups={groups} employee ={employee} name ={groups.nome}/>
+      <Forms groups={groups} newEmployee={addEmployee} />
+      <div className="footer-container">
+        {groups.map((group) => (
+          <Footer
+            key={group.name}
+            name={group.name}
+            color={group.color}
+            employees={employees.filter(
+              (employee) => employee.area === group.name
+            )}
+          />
+        ))}
+      </div>
     </>
   );
 }
+
 
 export default App;
