@@ -1,18 +1,32 @@
-import { styled } from "styled-components";
+import React from 'react';
+import { styled } from 'styled-components';
 
-export const Employee = styled.div`
+export const EmployeeWrapper = styled.div`
   width: 200px;
 `;
+
 export const EmployeeImage = styled.img`
-  width: 100px;
+  width: 200px;
   border-radius: 50%;
-  position: relative;
-  bottom: -50px;
+`;
+
+export const EmptyEmployeeContent = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
 `;
 
 export const Header = styled.div`
-  background-color: #f0f0f0;
+  background-color: ${({ color }) => color || '#f0f0f0'};
   border-radius: 10px 10px 0px 0px;
+  height: 200px; /* Adjust this height to match the height of the image or content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Footer = styled.div`
@@ -39,17 +53,12 @@ export const TitleH5 = styled.h5`
 `;
 
 export const RemoveButton = styled.button`
-    font-size: 16px;
-    background-color: #f76262;
-    border-radius: 10px;
-    padding: 20px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    color: #FFF;
-    
-
-
-`
-
-
+  font-size: 16px;
+  background-color: #f76262;
+  border-radius: 10px;
+  padding: 20px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+`;

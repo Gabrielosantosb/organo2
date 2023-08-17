@@ -6,10 +6,25 @@ import { Footer } from "./components/footer";
 import { Employee } from "./components/employee";
 
 function App() {
+  
   const [employees, setEmployees] = useState([]);
-  const addEmployee = (newEmployee) => {
+  
+  
+  const addEmployee = (newEmployee) => { 
+    newEmployee.id = Date.now();
     setEmployees([...employees, newEmployee]);
   };
+
+  const removeEmployee = (employeeToRemove) => {
+    const _employees = employees.filter(
+      (employee) => employee.id !== employeeToRemove
+      );
+      setEmployees(_employees)
+    
+    
+
+  };
+
   const groups = [
     {
       name: "Garçom",
@@ -37,9 +52,6 @@ function App() {
       color: "#FAE9F5",
     },
   ];
-  useEffect(() => {
-    console.log(employees);
-  }, [employees]);
 
 
   return (
@@ -49,12 +61,14 @@ function App() {
       <div className="footer-container">
         {groups.map((group) => (
           <Footer
+          
             key={group.name}
             name={group.name}
             color={group.color}
             employees={employees.filter(
               (employee) => employee.area === group.name
             )}
+            removeEmployee={removeEmployee}
           />
         ))}
       </div>
