@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Forms } from "./components/form";
 import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 
 function App() {
+  
+
   const [employee, setEmployee] = useState([]);
+  const addEmployee = (newEmployee) => {
+    setEmployee([...employee, newEmployee]);
+    console.log(employee)
+  };
   const groups = [
     {
       nome: "Garçom",
@@ -32,11 +39,14 @@ function App() {
       color: "#FAE9F5",
     },
   ];
-
+  useEffect(()=>{
+    console.log(employee)
+  }, [employee])
   return (
     <>
       <Header />
-      <Forms groups={groups} />
+      <Forms groups={groups} addEmployee = {employee =>addEmployee(employee)}/>
+      <Footer groups={groups} employee ={employee} name ={groups.nome}/>
     </>
   );
 }

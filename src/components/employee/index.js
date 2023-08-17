@@ -3,7 +3,7 @@ import { EmployeeImage, Footer, Header, TitleH4, TitleH5 } from './styles';
 
 // import { Container } from './styles';
 
-export const Employee = ({name, charge, img, area}) => {
+export const Employee = ({name, charge, img}) => {
   return (
     <Employee>
         <Header>
