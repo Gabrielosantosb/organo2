@@ -6,25 +6,36 @@ import { Footer } from "./components/footer";
 import { Employee } from "./components/employee";
 
 function App() {
+  useEffect(() => {
+    // Converte o JSON para um Objeto
+    const savedEmployees = JSON.parse(localStorage.getItem("employees"));
+    if (savedEmployees) {
+      setEmployees(savedEmployees);
+    }
+  }, []);
   
   const [employees, setEmployees] = useState([]);
   
   
-  const addEmployee = (newEmployee) => { 
-    newEmployee.id = Date.now();
-    setEmployees([...employees, newEmployee]);
+  const addEmployee = (newEmployee) => {
+    newEmployee.id = employees.length + 1
+    const _employees = [...employees, newEmployee];
+    setEmployees(_employees);
+
+    // Salvar no localStorage
+    // LocalStorage aceita comente strings, por isso precisa converter
+    localStorage.setItem("employees", JSON.stringify(_employees));
   };
 
   const removeEmployee = (employeeToRemove) => {
     const _employees = employees.filter(
       (employee) => employee.id !== employeeToRemove
-      );
-      setEmployees(_employees)
-    
-    
+    );
+    setEmployees(_employees);
 
+    // Atualizar localStorage
+    localStorage.setItem("employees", JSON.stringify(_employees));
   };
-
   const groups = [
     {
       name: "Garçom",
