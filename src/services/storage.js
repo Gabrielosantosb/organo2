@@ -1,8 +1,10 @@
+import { STORAGE } from "../common/constants";
+
 export const StorageServices = () => {
   const setStorage = ({ value }) => {
     // Salvar no localStorage
     // LocalStorage aceita comente strings, por isso precisa converter
-    localStorage.setItem("emplooyes", JSON.stringify(value));
+    localStorage.setItem(STORAGE.employees, JSON.stringify(value));
   };
 
   const getStorage = ({ value }) => {

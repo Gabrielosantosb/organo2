@@ -5,13 +5,15 @@ import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import {groups} from './common/groups'
 import { StorageServices } from "./services/storage";
+import { STORAGE } from "./common/constants";
 
 function App() {
   const [employees, setEmployees] = useState([]);
   const { getStorage, setStorage } = StorageServices();
 
   useEffect(() => {
-    const savedEmployees = getStorage({ value: "emplooyes" });
+    
+    const savedEmployees = getStorage({ value: STORAGE.employees });
     if (savedEmployees) {
       setEmployees(savedEmployees);
     }
