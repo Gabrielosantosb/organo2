@@ -6,9 +6,9 @@ import { List } from "../list";
 // import { Container } from './styles';
 
 export const Forms = ({groups, newEmployee}) => {
-  const [name, setName] = useState("teste");
-  const [charge, setCharge] = useState("teste");
-  const [img, setImg] = useState("https://github.com/gabrielosantosb.png");
+  const [name, setName] = useState("");
+  const [charge, setCharge] = useState("");
+  const [img, setImg] = useState("");
   const [area, setArea] = useState("");
 
   const handleSubmit = (event) => {
@@ -22,9 +22,9 @@ export const Forms = ({groups, newEmployee}) => {
       area
       })
     
-    // setName("");
-    // setCharge("");
-    // setImg("");
+    setName("");
+    setCharge("");
+    setImg("");
   };
 
 
